@@ -12,3 +12,13 @@ Available Commands:
   o           It will read the directory only, not directory inside dorectory.
 
 ```
+
+# Installation steps on macos
+```
+1) Build the project using
+go build
+2)Move the generated binary tfupgrade13 to a folder
+example /user/bin or ${HOME}/bin
+3)Add binary to the path
+export PATH="${HOME}/bin:${PATH}"
+```
