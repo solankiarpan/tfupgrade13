@@ -15,8 +15,8 @@ var DirectoryOnly string
 
 var directoryOnlyCmd = &cobra.Command{
 	Use:                   "o <directory_path>",
-	Short:                 "Upgrade tf syntax for the dir non recursively",
-	Long:                  `Upgrade syntax to terraform 0.13.0`,
+	Short:                 "It will read the directory only, not directory inside dorectory.",
+	Long:                  `To read the directory and replace speicific string with another sub-string in the dir files.`,
 	DisableFlagsInUseLine: true,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if DirectoryOnly == "" && len(args) < 1 {
@@ -47,7 +47,8 @@ var directoryOnlyCmd = &cobra.Command{
 			fmt.Println("File does not exist")
 		}
 
-		utils.ReplaceLineInDirOnly(dirname)
+		utils.ReplaceLineInDirOnly(dirname, `"\$\{(.*?)\}"`, "$1")
+		
 		fmt.Println("Successfully replaced specific strings in the files..!!")
 		fmt.Println("Process Completed")
 	},
@@ -55,5 +56,5 @@ var directoryOnlyCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(directoryOnlyCmd)
-	fileCmd.Flags().StringVarP(&File, "dironly", "o", "", "directory path")
+	directoryOnlyCmd.Flags().StringVarP(&File, "dironly", "o", "", "directory path")
 }

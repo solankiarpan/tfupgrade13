@@ -7,11 +7,11 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:               "tfupgrade13",
-	Version:           "1.0.0",
-	Short:             "Upgrade terraform syntax to 0.13.0",
-	Long:              `Upgrade terraform syntax to 0.13.0`,
-	CompletionOptions: cobra.CompletionOptions{DisableDefaultCmd: true},
+	Use:                "tfupgrade13",
+	Version:            "1.0.0",
+	Short:              "A Text Replacement Tool",
+	Long:               `Text Replacer Tool version 1.0.0`,
+	CompletionOptions:  cobra.CompletionOptions{DisableDefaultCmd: true},
 }
 
 func Execute() {

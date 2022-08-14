@@ -14,9 +14,9 @@ import (
 var File string
 
 var fileCmd = &cobra.Command{
-	Use:                   "f <file_path>",
-	Short:                 "Upgrade tf syntax for the provided file",
-	Long:                  `Upgrade syntax to terraform 0.13.0`,
+	Use:   "f <file_path>",
+	Short: "It will read the file",
+	Long:  `To read the file and replace speicific string with another sub-string.`,
 	DisableFlagsInUseLine: true,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if File == "" && len(args) < 1 {
@@ -47,8 +47,9 @@ var fileCmd = &cobra.Command{
 			fmt.Println("File does not exist")
 		}
 
-		utils.ReplaceLine(filename)
-		fmt.Println("Successfully updated syntax to terraform 0.13.0")
+		// utils.ReplaceLine(filename)
+		utils.ReplaceUsingRegexp(`"\$\{(.*?)\}"`, "$1", filename)
+		fmt.Println("Successfully replaced specific strings in the file..!!")
 		fmt.Println("Process Completed")
 
 	},
